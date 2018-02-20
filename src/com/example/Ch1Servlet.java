@@ -3,10 +3,15 @@ package com.example;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.examplev.ColorChoose;
 
 public class Ch1Servlet extends HttpServlet{
 	
@@ -30,15 +35,22 @@ public class Ch1Servlet extends HttpServlet{
 	}
 	public void doPost(HttpServletRequest request, 
 			HttpServletResponse response)
-			throws IOException{
+			throws IOException, ServletException{
 
-			response.setContentType("text/html;charset=utf-8");
-//			response.setCharacterEncoding("utf8");
-			request.setCharacterEncoding("utf8");
-			PrintWriter out = response.getWriter();
-			out.println("你好!!");
+//			response.setContentType("text/html;charset=utf-8");
+//			request.setCharacterEncoding("utf8");
+//			PrintWriter out = response.getWriter();
+//			out.println("你好!!");
+//			String c = request.getParameter("color");
+//			out.println("<br>你选择的颜色是： "+"<b>"+c+"</b>");
 			String c = request.getParameter("color");
-			out.println("<br>你选择的颜色是： "+"<b>"+c+"</b>");
+			c = new String(c.getBytes("ISO-8859-1"), "utf-8");
+			ColorChoose cc = new ColorChoose();
+			List result = cc.getColor(c);
+			request.setAttribute("styles", result);
+			request.setAttribute("color", c);
+			RequestDispatcher view = request.getRequestDispatcher("result.jsp");
+			view.forward(request, response);
 
 }
 }
