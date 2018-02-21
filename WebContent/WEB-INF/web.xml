@@ -5,6 +5,27 @@
   	<servlet-name>myServlet</servlet-name>
   	<servlet-class>com.example.Ch1Servlet</servlet-class>
   </servlet>
+  <context-param>
+  	<param-name>adminEmail</param-name>
+  	<param-value>xiaoma@qq.com.cn</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>userEmail</param-name>
+  	<param-value>xiaoma2@qq.com.cn</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>foo</param-name>
+  	<param-value>bar</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>beg</param-name>
+  	<param-value>Wang Wang</param-value>
+  </context-param>
+  <listener>
+  	<listener-class>
+  	com.examplelistener.MyServletContextListener
+  	</listener-class>
+  </listener>
   <servlet-mapping>
   	<servlet-name>myServlet</servlet-name>
   	<url-pattern>/data2.do</url-pattern>

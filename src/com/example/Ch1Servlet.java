@@ -27,9 +27,15 @@ public class Ch1Servlet extends HttpServlet{
 		String cString1 = request.getParameter("param1");
 		cString1 = new String(cString1.getBytes("ISO-8859-1"), "utf-8");
 		String cString2 = request.getParameter("param2");
+		String foo = getServletContext().getInitParameter("foo");
+		String email = getServletContext().getInitParameter("adminEmail");
+		Dog dog = (Dog) getServletContext().getAttribute("dog");
 		out.println("<h1 align=center>关于Java Servlet例子</h1>"
 				+"姓名: "+cString1+"<br />"
 				+"密码: "+cString2+"<br />"
+				+"foo: "+foo+"<br />"
+				+"adminEmail: "+email+"<br />"
+				+ dog.getBreed() +"<br />"
 				+"<br />"+today);
 		
 	}
