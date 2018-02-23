@@ -15,6 +15,10 @@ public class ColorChoose {
 			brandList.add("King");
 			brandList.add("Jmmy");
 		}
+		else if(color.equals("棕色")){
+			brandList.add("小红");
+			brandList.add("小米");
+		}
 		else{
 			brandList.add("Jail");
 			brandList.add("James");

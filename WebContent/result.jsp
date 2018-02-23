@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>使用Java JSP</title>
+<title>使用Java JSP POST</title>
 </head>
 <body>
 <h1 align="center">推荐使用JSP</h1>

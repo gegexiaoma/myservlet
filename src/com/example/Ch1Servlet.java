@@ -17,26 +17,30 @@ public class Ch1Servlet extends HttpServlet{
 	
 	public void doGet(HttpServletRequest request, 
 					HttpServletResponse response)
-					throws IOException{
+					throws IOException, ServletException{
 		
-		response.setContentType("text/html;charset=utf-8");
-		PrintWriter out = response.getWriter();
+//		response.setContentType("text/html;charset=utf-8");
+//		PrintWriter out = response.getWriter();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("日期 yyyy年M月d日 -- 时间 HH:mm:ss");
 		String today = dateFormat.format(new java.util.Date());
-//		java.util.Date today = new java.util.Date();
+		request.setAttribute("today", today);
 		String cString1 = request.getParameter("param1");
+		request.setAttribute("param1", cString1);
 		cString1 = new String(cString1.getBytes("ISO-8859-1"), "utf-8");
 		String cString2 = request.getParameter("param2");
-		String foo = getServletContext().getInitParameter("foo");
-		String email = getServletContext().getInitParameter("adminEmail");
-		Dog dog = (Dog) getServletContext().getAttribute("dog");
-		out.println("<h1 align=center>关于Java Servlet例子</h1>"
-				+"姓名: "+cString1+"<br />"
-				+"密码: "+cString2+"<br />"
-				+"foo: "+foo+"<br />"
-				+"adminEmail: "+email+"<br />"
-				+ dog.getBreed() +"<br />"
-				+"<br />"+today);
+		request.setAttribute("param2", cString2);
+//		String foo = getServletContext().getInitParameter("foo");
+//		String email = getServletContext().getInitParameter("adminEmail");
+//		Dog dog = (Dog) getServletContext().getAttribute("dog");
+//		out.println("<h1 align=center>关于Java Servlet例子</h1>"
+//				+"姓名: "+cString1+"<br />"
+//				+"密码: "+cString2+"<br />"
+//				+"foo: "+foo+"<br />"
+//				+"adminEmail: "+email+"<br />"
+//				+ dog.getBreed() +"<br />"
+//				+"<br />"+today);
+		RequestDispatcher view = request.getRequestDispatcher("getresult.jsp");
+		view.forward(request, response);
 		
 	}
 	public void doPost(HttpServletRequest request, 
